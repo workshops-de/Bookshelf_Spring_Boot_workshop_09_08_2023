@@ -4,6 +4,6 @@
  |    ` |    | |    | |-<    `--.  |'   ` |----'  |   |
  `----'  `._.'  `._.' /  \_ \___.' /    | `.___, /\__ |
                                                       /
-AppTitle: ${application.title}
+Application Title: ${application.title}
 Version: ${application.version}
 Spring Boot Version: ${spring-boot.version}
