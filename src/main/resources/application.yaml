@@ -1,0 +1,9 @@
+bookshelf:
+  title: '@project.name@'
+  version: '@project.version@'
+  description: 'This is a sample bookshelf'
+  capacity: 1000
+spring:
+  thymeleaf:
+    suffix: ',tl'
+

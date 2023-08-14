@@ -1,0 +1,6 @@
+server:
+  port: 9191
+
+springdoc:
+  api-docs:
+    enabled: false

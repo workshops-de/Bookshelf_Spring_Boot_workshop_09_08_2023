@@ -37,7 +37,7 @@ public class BookRestController {
         return service.getByIsbn(isbnNumber);
     }
     @GetMapping(params = "authorName")
-    public Book getByAuthor(@RequestParam(name = "authorName") String author) {
+    public Book getByAuthor(@RequestParam(name = "authorName", required = false) String author) {
         return service.getByAuthor(author);
     }
 

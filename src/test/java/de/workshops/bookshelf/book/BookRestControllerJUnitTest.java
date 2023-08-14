@@ -12,7 +12,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -30,10 +29,7 @@ class BookRestControllerJUnitTest {
     
     @Test
     void shouldGetAllBooks() {
-        final var book = new Book();
-        book.setTitle("My Book");
-
-        when(service.getAllBooks()).thenReturn(List.of(book));
+        when(service.getAllBooks()).thenReturn(List.of());
 
         final var allBooks = controller.getAllBooks();
 

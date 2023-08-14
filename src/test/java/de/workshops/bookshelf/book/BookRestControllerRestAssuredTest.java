@@ -30,6 +30,7 @@ class BookRestControllerRestAssuredTest {
                 .log().all()
                 .when().get("/book")
                 .then()
+                .log().all()
                 .statusCode(200)
                 .extract().as(new TypeRef<List<Book>>() {});
 
