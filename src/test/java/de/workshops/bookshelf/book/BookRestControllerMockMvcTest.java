@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @SpringBootTest
@@ -34,6 +35,7 @@ class BookRestControllerMockMvcTest {
     @Test
     void shouldGetAllBooks() throws Exception {
         mockMvc.perform(get("/book"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)));
     }
@@ -41,12 +43,13 @@ class BookRestControllerMockMvcTest {
     @Test
     void shouldGetAllBooksWithResult() throws Exception {
         final var mvcResult = mockMvc.perform(get("/book"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
 
         final var jsonPayload = mvcResult.getResponse().getContentAsString();
 
-        List<Book> books = mapper.readValue(jsonPayload, new TypeReference<List<Book>>() {});
+        List<Book> books = mapper.readValue(jsonPayload, new TypeReference<>() {});
 
         assertThat(books).hasSize(3);
     }
@@ -54,6 +57,7 @@ class BookRestControllerMockMvcTest {
     @Test
     void shouldGetByIsbn() throws Exception {
         mockMvc.perform(get("/book/{isbn}", "1234567890"))
+                .andDo(print())
                 .andExpect(status().isNotFound());
     }
 
@@ -69,6 +73,7 @@ class BookRestControllerMockMvcTest {
                         }
                         """)
                 .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andReturn();
 
