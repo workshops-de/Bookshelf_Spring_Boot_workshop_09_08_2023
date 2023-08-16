@@ -48,7 +48,8 @@ public class BookRestController {
 
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        return new ResponseEntity<>(book, HttpStatus.CREATED);
+        final var createdBook = service.createBook(book);
+        return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
 
     @ExceptionHandler(BookException.class)

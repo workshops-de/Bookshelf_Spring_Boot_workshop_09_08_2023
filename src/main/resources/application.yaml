@@ -6,4 +6,20 @@ bookshelf:
 spring:
   thymeleaf:
     suffix: ',tl'
+  datasource:
+    url: jdbc:postgresql://roasted-tomato.db.elephantsql.com:5432/db_trainer
+    driver-class-name: org.postgresql.Driver
+    username: trainer
+    password: pwTrainer
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      mode: always
 
